@@ -5,7 +5,7 @@ const typeDefs = gql`
 
     type Curso {
         titulo: String
-
+        tecnologia: String
     }
 
     type Query {
