@@ -3,8 +3,13 @@ const {ApolloServer, gql }= require('apollo-server')
 
 const typeDefs = gql`
 
+    type Curso {
+        titulo: String
+
+    }
+
     type Query {
-        obtenerCursos
+        obtenerCursos : [Curso]
     } 
 
 `;
@@ -34,7 +39,7 @@ const cursos = [
     },
   ];
 
-const server = new ApolloServer()
+const server = new ApolloServer( { typeDefs, resolvers })
 
 server.listen().then( ({url}) =>{
     console.log(`servidor listo en la URL ${url}`)
