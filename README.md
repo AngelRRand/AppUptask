@@ -1,3 +1,3 @@
 # AppUptask
 
-App creada con React Native - MongoDB - GraphQL - Apolo Server
+App creada con React Native - MongoDB - GraphQL - Apollo Server
