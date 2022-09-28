@@ -34,7 +34,7 @@ const cursos = [
       tecnologia: "React",
     },
     {
-      titulo: "React js - ReactJS Avanzado - FullStack React GraphQL y Apollo",
+      titulo: "React js - ReactJS Avanzado - FulllStack React GraphQL y Apollo",
       tecnologia: "React",
     },
   ];
