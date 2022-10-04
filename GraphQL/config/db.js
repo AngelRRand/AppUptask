@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('dotenv').config({path: '.env'});
 
 
-const conectarDB = async () =>{
+const conectDB = async () =>{
     try {
         await mongoose.connect(process.env.DB_MONGO, {
             useNewUrlParser: true,
@@ -15,4 +15,4 @@ const conectarDB = async () =>{
     }
 }
 
-module.exports = conectarDB;
+module.exports = conectDB;

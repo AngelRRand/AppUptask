@@ -1,27 +1,32 @@
-const cursos = [
+const Course = [
     {
-        titulo: "Javascript Moderno Guía definitiva Construye +10 Proyectos",
-        tecnologia: "Javascript ES6",
+        title: "Javascript Moderno Guía definitiva Construye +10 Proyectos",
+        technology: "Javascript ES6",
     },
     {
-        titulo: "React - La Guía Completa: Hooks Context Redux MERN +15 Apps",
-        tecnologia: "React",
+        title: "React - La Guía Completa: Hooks Context Redux MERN +15 Apps",
+        technology: "React",
     },
     {
-        titulo: "Node js - Bootcamp Desarrollo Web inc. MVC y REST API",
-        tecnologia: "React",
+        title: "Node js - Bootcamp Desarrollo Web inc. MVC y REST API",
+        technology: "React",
     },
     {
-        titulo: "React js - ReactJS Avanzado - FulllStack React GraphQL y Apollo",
-        tecnologia: "React",
+        title: "React js - ReactJS Avanzado - FulllStack React GraphQL y Apollo",
+        technology: "React",
     },
 ];
 
 const resolvers = {
     Query: {
-        obtenerCursos: () => cursos,
+        getCourse: () => Course,
 
-        obtenerTecnologias: () => tecnologia
+        getTechnology: () => technology
+    },
+    Mutation: {
+        createUser: () => {
+            console.log('creando usuario')
+        }
     }
 };
 
