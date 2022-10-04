@@ -1,21 +1,4 @@
-const Course = [
-    {
-        title: "Javascript Moderno Guía definitiva Construye +10 Proyectos",
-        technology: "Javascript ES6",
-    },
-    {
-        title: "React - La Guía Completa: Hooks Context Redux MERN +15 Apps",
-        technology: "React",
-    },
-    {
-        title: "Node js - Bootcamp Desarrollo Web inc. MVC y REST API",
-        technology: "React",
-    },
-    {
-        title: "React js - ReactJS Avanzado - FulllStack React GraphQL y Apollo",
-        technology: "React",
-    },
-];
+const user = require('../models/users.js')
 
 const resolvers = {
     Query: {
@@ -24,8 +7,20 @@ const resolvers = {
         getTechnology: () => technology
     },
     Mutation: {
-        createUser: () => {
-            console.log('creando usuario')
+        createUser: async (root, {input}, ctx) => {
+            const {email, password} = input;
+
+            const existUser = await user.findOne({email});
+            if(existUser){
+                throw new Error('El usuario ya esta registrado');
+            }
+            try {
+                let newUser = new user(input);
+                newUser.save();
+                return 'Usuario creado correctamente'
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
 };

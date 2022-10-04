@@ -17,8 +17,15 @@ const typeDefs = gql`
         getTechnology: [Technology]
     } 
 
+
+    input userInput {
+        name: String!
+        email: String!
+        password: String!
+    }
+
     type Mutation {
-        createUser: String
+        createUser(input: userInput): String
     }
 `;
 
