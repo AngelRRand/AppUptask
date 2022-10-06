@@ -17,7 +17,7 @@ const resolvers = {
             if(existUser){
                 throw new Error('El usuario ya esta registrado');
 
-                
+
             }
             try {
                 //Hash Password
@@ -51,6 +51,15 @@ const resolvers = {
             return {
                 token: createToken(existUser, process.env.SECRET, '2hr')
             }
+        },
+        newProyect: async (root, {input}) => {
+
+            try {
+                
+            } catch (error) {
+                console.log(first)
+            }
+            
         }
     }
 };
