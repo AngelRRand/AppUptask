@@ -16,17 +16,21 @@ const resolvers = {
             const existUser = await user.findOne({email});
             if(existUser){
                 throw new Error('El usuario ya esta registrado');
+
+                
             }
             try {
-
                 //Hash Password
                 const salt = await bcryptjs.genSaltSync(10)
                 input.password = await bcryptjs.hash(password, salt)
+
 
                 //Create user
                 let newUser = new user(input);
                 newUser.save();
                 return 'Usuario creado correctamente'
+
+
             } catch (error) {
                 console.log(error)
             }
