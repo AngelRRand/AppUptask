@@ -1,4 +1,5 @@
 const user = require('../models/users.js')
+const proyect = require('../models/proyects.js')
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 require('dotenv').config({path: 'variables.env'})
@@ -55,9 +56,13 @@ const resolvers = {
         newProyect: async (root, {input}) => {
 
             try {
-                
+                const newProyect = new proyect(input)
+
+                const result = await newProyect.save()
+
+                return result
             } catch (error) {
-                console.log(first)
+                console.log(error)
             }
             
         }
