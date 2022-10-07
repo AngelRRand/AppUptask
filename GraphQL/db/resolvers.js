@@ -69,6 +69,20 @@ const resolvers = {
                 console.log(error)
             }
             
+        },
+        updateProyect: async (root, {id, input}, ctx) => {
+            //Existe?
+            let updateProyect = await proyect.findById(id)
+            if(!updateProyect){
+                throw new Error('Proyecto no encontrado')
+            }
+            //Revisar que la persona trata de editarlo
+            if(updateProyect.author.toString() !== ctx.user.id){
+                throw new Error('No tienes las credenciales para editar')
+            }
+            //Guardar
+            updateProyect = await proyect.findOneAndUpdate({_id: id}, input, {new: true})
+            return updateProyect
         }
     }
 };
