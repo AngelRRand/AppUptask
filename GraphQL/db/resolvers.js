@@ -53,7 +53,7 @@ const resolvers = {
                 token: createToken(existUser, process.env.SECRET, '2hr')
             }
         },
-        newProyect: async (root, {input}) => {
+        newProyect: async (root, {input}, ctx) => {
 
             try {
                 const newProyect = new proyect(input)

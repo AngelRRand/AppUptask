@@ -38,7 +38,7 @@ const typeDefs = gql`
         password: String!
     }
 
-    inputr ProyectInput {
+    input ProyectInput {
         title: String!
     }
 

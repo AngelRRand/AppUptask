@@ -7,7 +7,7 @@ const proyectShema = new mongose.Schema({
         trim: true
     },
     author:{
-        type: mongose.Shemam.Types.ObjectId,
+        type: mongose.Schema.Types.ObjectId,
         ref: 'user'
     },
     create: {
