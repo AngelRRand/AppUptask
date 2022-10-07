@@ -89,6 +89,19 @@ const resolvers = {
             //Guardar
             updateProyect = await proyect.findOneAndUpdate({_id: id}, input, {new: true})
             return updateProyect
+        },
+        deletProyect: async (root, {id, input}, ctx) => {
+            let deletProyect = await proyect.findById(id)
+
+            if(!deletProyect){
+                throw new Error('Proyecto no encontrado')
+            }
+            if(deletProyect.author.toString() !== ctx.user.id){
+                throw new Error('No tienes las credenciales para editar')
+            }
+
+            await proyect.findByIdAndDelete({_id: id})
+            return 'proyecto eliminado'
         }
     }
 };
