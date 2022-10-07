@@ -10,6 +10,12 @@ const createToken = (user, secret, expiresIn) =>{
 }
 
 const resolvers = {
+    Query: {
+        getProyects: async(root, {input}, ctx)=>{
+            const proyects = await proyect.find({author: ctx.user.id})
+            return proyects
+        }
+    },
     Mutation: {
         createUser: async (root, {input}, ctx) => {
             const {email, password} = input;
