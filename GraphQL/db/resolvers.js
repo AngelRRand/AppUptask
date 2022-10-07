@@ -55,8 +55,12 @@ const resolvers = {
         },
         newProyect: async (root, {input}, ctx) => {
 
+            console.log('Desde resolver', ctx)
             try {
                 const newProyect = new proyect(input)
+
+                newProyect.author = ctx.user.id
+
 
                 const result = await newProyect.save()
 
