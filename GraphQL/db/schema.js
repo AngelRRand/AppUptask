@@ -12,6 +12,14 @@ const typeDefs = gql`
         token: String
     }
 
+    type Homework {
+        title: String
+        proyect: String
+        state: Boolean
+        id: ID
+        
+    }
+
     type Query {
         getProyects: [Proyect]
     } 
@@ -32,12 +40,24 @@ const typeDefs = gql`
         title: String!
     }
 
+    input HomeworkInput {
+        title: String!
+        proyect: String
+    }
+
     type Mutation {
+
+        #USER
         createUser(input: UserInput): String
         authenticationUser(input: AuthenticationInput) : Token
+
+        #PROYECT
         newProyect(input: ProyectInput) : Proyect
         updateProyect(id: ID!, input: ProyectInput) : Proyect
         deletProyect(id: ID!) : String
+
+        #HOMEWORK
+        newHomework(input: HomeworkInput): Homework
     }
 `;
 

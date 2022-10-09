@@ -1,5 +1,6 @@
 const user = require('../models/users.js')
 const proyect = require('../models/proyects.js')
+const homework = require('../models/homeworks.js')
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 require('dotenv').config({path: '.env'})
@@ -74,7 +75,6 @@ const resolvers = {
             } catch (error) {
                 console.log(error)
             }
-            
         },
         updateProyect: async (root, {id, input}, ctx) => {
             //Existe?
@@ -90,7 +90,7 @@ const resolvers = {
             updateProyect = await proyect.findOneAndUpdate({_id: id}, input, {new: true})
             return updateProyect
         },
-        deletProyect: async (root, {id, input}, ctx) => {
+        deletProyect: async (root, {id}, ctx) => {
             let deletProyect = await proyect.findById(id)
 
             if(!deletProyect){
@@ -102,6 +102,16 @@ const resolvers = {
 
             await proyect.findByIdAndDelete({_id: id})
             return 'proyecto eliminado'
+        },
+        newHomework: async (root, {input}, ctx) => {
+            try {
+                const newHomework = new homework(input)
+                newHomework.author = ctx.user.id
+                const result = await newHomework.save()
+                return result
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
 };
