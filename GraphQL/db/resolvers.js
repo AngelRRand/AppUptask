@@ -119,6 +119,7 @@ const resolvers = {
         },
         updateHomework: async (root, {id, input, state}, ctx) => {
             let updateHomework = await homework.findById(id)
+
             if(!updateHomework){
                 throw new Error('Tarea no encontrada')
             }
@@ -131,6 +132,21 @@ const resolvers = {
 
             updateHomework = await homework.findOneAndUpdate({_id : id}, input, {new : true})
             return updateHomework
+        },
+        deletHomework: async (root, {id}, ctx) => {
+            let updateHomework = await homework.findById(id)
+
+            if(!updateHomework){
+                throw new Error('Tarea no encontrada')
+            }
+
+            if(updateHomework.author.toString() !== ctx.user.id){
+                throw new Error('No tienes las credenciales para editar')
+            }
+
+            await homework.findOneAndDelete({_id: id})
+
+            return "Tarea Eliminada"
         }
     }
 };
