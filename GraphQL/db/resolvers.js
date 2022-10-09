@@ -112,6 +112,21 @@ const resolvers = {
             } catch (error) {
                 console.log(error)
             }
+        },
+        updateHomework: async (root, {id, input, state}, ctx) => {
+            let updateHomework = await homework.findById(id)
+            if(!updateHomework){
+                throw new Error('Tarea no encontrada')
+            }
+
+            if(updateHomework.author.toString() !== ctx.user.id){
+                throw new Error('No tienes las credenciales para editar')
+            }
+
+            input.state = state
+
+            updateHomework = await homework.findOneAndUpdate({_id : id}, input, {new : true})
+            return updateHomework
         }
     }
 };

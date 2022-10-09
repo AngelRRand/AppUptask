@@ -58,6 +58,7 @@ const typeDefs = gql`
 
         #HOMEWORK
         newHomework(input: HomeworkInput): Homework
+        updateHomework(id: ID!, input: HomeworkInput, state: Boolean) : Homework
     }
 `;
 
