@@ -22,6 +22,8 @@ const typeDefs = gql`
 
     type Query {
         getProyects: [Proyect]
+
+        getHomeworks(input: ProyectIDInput) : [Homework]
     } 
 
 
@@ -38,6 +40,10 @@ const typeDefs = gql`
 
     input ProyectInput {
         title: String!
+    }
+
+    input ProyectIDInput {
+        proyect: String!
     }
 
     input HomeworkInput {

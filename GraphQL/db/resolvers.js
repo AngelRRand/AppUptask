@@ -15,6 +15,10 @@ const resolvers = {
         getProyects: async(root, {input}, ctx)=>{
             const proyects = await proyect.find({author: ctx.user.id})
             return proyects
+        },
+        getHomeworks: async(root, {input}, ctx)=>{
+            const homeworks = await homework.find({author: ctx.user.id}).where('proyect').equals(input.proyect)
+            return homeworks
         }
     },
     Mutation: {
