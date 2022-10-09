@@ -1,13 +1,13 @@
-const mongose = require('mongoose');
+const mongoose = require('mongoose');
 
-const proyectShema = new mongose.Schema({
+const proyectShema = new mongoose.Schema({
     title:{
         type: String,
         required: true,
         trim: true
     },
     author:{
-        type: mongose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
     create: {
@@ -17,4 +17,4 @@ const proyectShema = new mongose.Schema({
 })
 
 
-module.exports = mongose.model('proyect', proyectShema)
+module.exports = mongoose.model('proyect', proyectShema)

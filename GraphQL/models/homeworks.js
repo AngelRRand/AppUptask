@@ -1,14 +1,13 @@
-const { default: mongoose } = require('mongoose');
-const mongose = require('mongoose');
+const mongoose = require('mongoose');
 
-const homeworkShema = new mongose.Schema({
+const homeworkShema = new mongoose.Schema({
     title:{
         type: String,
         required: true,
         trim: true
     },
     author:{
-        type: mongose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
     create: {
@@ -26,4 +25,4 @@ const homeworkShema = new mongose.Schema({
 })
 
 
-module.exports = mongose.model('homework', homeworkShema)
+module.exports = mongoose.model('homework', homeworkShema)
