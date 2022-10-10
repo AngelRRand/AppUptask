@@ -21,17 +21,14 @@ export default function App() {
               title: 'Iniciar Sesion',
               headerShown: false
             }}
-          >
-            <Stack.Screen
-              name='CreateUser'
-              component={CreateUser}
-              options={{
-                title: 'Crear Cuenta',
-              }}
-            ></Stack.Screen>
-
-
-          </Stack.Screen>
+          />
+          <Stack.Screen
+            name='CreateUser'
+            component={CreateUser}
+            options={{
+              title: 'Crear Cuenta',
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
